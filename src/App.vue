@@ -4,7 +4,9 @@
   <!-- 위에있는 v-if가 참이 아니라면 v-else -->
   <!-- v-else-if : if문 연달아 여러개 쓰고싶을 경우 -->
 
-  <Modal />
+  <Modal :products="products" :누른거="누른거" :모달창열렸니="모달창열렸니" />
+  <!-- props 사용법 : 데이터 보내고 등록후 사용
+  v-bind 와 : 같음 -->
 
   <div class="menu">
     <a v-for="a in 메뉴들" :key="a">{{ a }}</a>
@@ -16,7 +18,7 @@
 
   <Discount />
   <!-- 반복문  -->
-  <div v-for="(a, i) in products" :key="i">
+  <!-- <div v-for="(a, i) in products" :key="i">
     <img :src="a.image" class="room-img" />
     <h4
       @click="
@@ -30,7 +32,14 @@
     <p>{{ a.price }}</p>
     <button @click="increase(i)">허위매물신고</button>
     <span>신고수 : {{ 신고수[i] }}</span>
-  </div>
+  </div> -->
+  <Card
+    :products="products"
+    :누른거="누른거"
+    :모달창열렸니="모달창열렸니"
+    :increase="increase"
+    :신고수="신고수"
+  />
 
   <!-- 노가다 -->
   <div>
@@ -65,6 +74,7 @@
 import oneroomdata from "./assets/oneroom";
 import Discount from "./Discount.vue";
 import Modal from "./Modal.vue";
+import Card from "./Card.vue";
 
 export default {
   name: "App",
@@ -93,6 +103,7 @@ export default {
   components: {
     Discount: Discount,
     Modal: Modal,
+    Card: Card,
     // 컴포넌트화 방법 : 스크립트 아래 import, components에 정의
   },
 };

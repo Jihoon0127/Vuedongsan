@@ -14,6 +14,14 @@
 <script>
 export default {
   name: "Modal",
+  props: {
+    products: Array,
+    누른거: Number,
+    모달창열렸니: Boolean,
+  },
+  data() {
+    return {};
+  },
 };
 </script>
 
