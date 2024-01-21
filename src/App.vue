@@ -1,13 +1,10 @@
 <template>
-  <div class="black-bg" v-if="모달창열렸니 == true">
-    <!-- v-if : 조건식이 참일때만 보여줌 
-    데이터에따라 UI가 어떻게 보일지 작성-->
-    <div class="white-bg">
-      <h4>상세페이지</h4>
-      <p>{{ selectContent }}</p>
-      <button @click="모달창열렸니 = false">닫기</button>
-    </div>
-  </div>
+  <div v-if="ture">안녕하세요</div>
+  <div v-else>안녕하세요2</div>
+  <!-- 위에있는 v-if가 참이 아니라면 v-else -->
+  <!-- v-else-if : if문 연달아 여러개 쓰고싶을 경우 -->
+
+  <Modal />
 
   <div class="menu">
     <a v-for="a in 메뉴들" :key="a">{{ a }}</a>
@@ -17,10 +14,19 @@
     - 오른쪽 변수는 1씩 증가하는 정수-->
   </div>
 
+  <Discount />
   <!-- 반복문  -->
-  <div v-for="(a, i) in products" :key="a">
+  <div v-for="(a, i) in products" :key="i">
     <img :src="a.image" class="room-img" />
-    <h4 @click="selectProduct(i)">{{ a.title }}</h4>
+    <h4
+      @click="
+        selectProduct(i);
+        모달창열렸니 = true;
+        누른거 = i;
+      "
+    >
+      {{ a.title }}
+    </h4>
     <p>{{ a.price }}</p>
     <button @click="increase(i)">허위매물신고</button>
     <span>신고수 : {{ 신고수[i] }}</span>
@@ -57,11 +63,14 @@
 2. Vue의 실시간 자동 렌더링-->
 <script>
 import oneroomdata from "./assets/oneroom";
+import Discount from "./Discount.vue";
+import Modal from "./Modal.vue";
 
 export default {
   name: "App",
   data() {
     return {
+      누른거: 0,
       모달창열렸니: false,
       신고수: [0, 0, 0],
       price1: ["10", "20", "30"],
@@ -81,7 +90,11 @@ export default {
       this.모달창열렸니 = true;
     },
   },
-  components: {},
+  components: {
+    Discount: Discount,
+    Modal: Modal,
+    // 컴포넌트화 방법 : 스크립트 아래 import, components에 정의
+  },
 };
 </script>
 
