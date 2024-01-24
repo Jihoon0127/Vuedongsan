@@ -1,12 +1,13 @@
 <template>
   <div v-if="ture">안녕하세요</div>
-  <div v-else>안녕하세요2</div>
+  <div v-else >안녕하세요2</div>
   <!-- 위에있는 v-if가 참이 아니라면 v-else -->
   <!-- v-else-if : if문 연달아 여러개 쓰고싶을 경우 -->
 
   <Modal :products="products" :누른거="누른거" :모달창열렸니="모달창열렸니" />
   <!-- props 사용법 : 데이터 보내고 등록후 사용
-  v-bind 와 : 같음 -->
+  v-bind 와 : 같음 
+  props 보낼때 다양한 자료형 입력가능 :작명="Array,Object"-->
 
   <div class="menu">
     <a v-for="a in 메뉴들" :key="a">{{ a }}</a>
