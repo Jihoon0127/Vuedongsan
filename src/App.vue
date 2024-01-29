@@ -34,13 +34,15 @@
     <button @click="increase(i)">허위매물신고</button>
     <span>신고수 : {{ 신고수[i] }}</span>
   </div> -->
-  <Card
-    :products="products"
-    :누른거="누른거"
-    :모달창열렸니="모달창열렸니"
-    :increase="increase"
-    :신고수="신고수"
-  />
+<Card 
+@openModal="모달창열렸니 = true ; 누른거 = $event"
+  
+        :원룸="products[i]"
+        v-for="(a, i) in products"
+        :key="a"
+  
+/>
+<!-- 자식이 보낸 데이터는 $event변수에 담겨있음 i도 가능-->
 
   <!-- 노가다 -->
   <div>
@@ -87,7 +89,7 @@ export default {
       price1: ["10", "20", "30"],
       products: oneroomdata,
       메뉴들: ["Home", "Shop", "About"],
-      selectContent: null,
+      // selectContent: null,
     };
   },
   methods: {
@@ -97,9 +99,9 @@ export default {
       // 함수안에서 데이터 쓸 땐 this.데이터명
     },
     selectProduct(i) {
-      this.selectContent = this.products[i].content;
-      this.모달창열렸니 = true;
-    },
+            this.모달창열렸니 = true;
+            this.누른거 = i;
+        },
   },
   components: {
     Discount: Discount,
