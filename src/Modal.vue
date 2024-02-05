@@ -6,7 +6,8 @@
       <h4>{{ products[누른거].title }}</h4>
       <p>{{ products[누른거].content }}</p>
       <Discount />
-      <button @click="모달창열렸니 = false">닫기</button>
+      <!-- <button @click="모달창열렸니 = false">닫기</button> -->
+      <button @click="$emit('closeModal', false)">닫기</button>
     </div>
   </div>
 </template>

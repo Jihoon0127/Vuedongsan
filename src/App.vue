@@ -4,7 +4,7 @@
   <!-- 위에있는 v-if가 참이 아니라면 v-else -->
   <!-- v-else-if : if문 연달아 여러개 쓰고싶을 경우 -->
 
-  <Modal :products="products" :누른거="누른거" :모달창열렸니="모달창열렸니" />
+  <Modal @closeModal="모달창열렸니 = $event" :products="products" :누른거="누른거" :모달창열렸니="모달창열렸니" />
   <!-- props 사용법 : 데이터 보내고 등록후 사용
   v-bind 와 : 같음 
   props 보낼때 다양한 자료형 입력가능 :작명="Array,Object"-->
@@ -18,22 +18,7 @@
   </div>
 
   <Discount />
-  <!-- 반복문  -->
-  <!-- <div v-for="(a, i) in products" :key="i">
-    <img :src="a.image" class="room-img" />
-    <h4
-      @click="
-        selectProduct(i);
-        모달창열렸니 = true;
-        누른거 = i;
-      "
-    >
-      {{ a.title }}
-    </h4>
-    <p>{{ a.price }}</p>
-    <button @click="increase(i)">허위매물신고</button>
-    <span>신고수 : {{ 신고수[i] }}</span>
-  </div> -->
+ 
 <Card 
 @openModal="모달창열렸니 = true ; 누른거 = $event"
   
